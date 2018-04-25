@@ -12,6 +12,9 @@
 		1B4EB4AD207F2EFA003F6455 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B4EB4AB207F2EFA003F6455 /* Main.storyboard */; };
 		1B4EB4AF207F2EFB003F6455 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B4EB4AE207F2EFB003F6455 /* Assets.xcassets */; };
 		1B4EB4B2207F2EFB003F6455 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B4EB4B0207F2EFB003F6455 /* LaunchScreen.storyboard */; };
+		1B4EB4BA208F0F5E003F6455 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4EB4B9208F0F5E003F6455 /* LoginController.swift */; };
+		1B4EB4BE208F1434003F6455 /* config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4EB4BD208F1434003F6455 /* config.swift */; };
+		99F0000EA62E32BC8A3A00C2 /* Pods_MyTapNews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B0B02A67E0FFC0786796EA /* Pods_MyTapNews.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,11 @@
 		1B4EB4AE207F2EFB003F6455 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B4EB4B1207F2EFB003F6455 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B4EB4B3207F2EFB003F6455 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B4EB4B9208F0F5E003F6455 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		1B4EB4BD208F1434003F6455 /* config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = config.swift; sourceTree = "<group>"; };
+		3DC624752B52E478F7162654 /* Pods-MyTapNews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyTapNews.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyTapNews/Pods-MyTapNews.release.xcconfig"; sourceTree = "<group>"; };
+		B7B0B02A67E0FFC0786796EA /* Pods_MyTapNews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyTapNews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBF84EA112F5151B7DC61AA8 /* Pods-MyTapNews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyTapNews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyTapNews/Pods-MyTapNews.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99F0000EA62E32BC8A3A00C2 /* Pods_MyTapNews.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +49,8 @@
 			children = (
 				1B4EB4A6207F2EFA003F6455 /* MyTapNews */,
 				1B4EB4A5207F2EFA003F6455 /* Products */,
+				20C248BE613003B6697035F0 /* Pods */,
+				89B061C6466A6DD2FA07D774 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +65,49 @@
 		1B4EB4A6207F2EFA003F6455 /* MyTapNews */ = {
 			isa = PBXGroup;
 			children = (
-				1B4EB4A7207F2EFA003F6455 /* AppDelegate.swift */,
-				1B4EB4A9207F2EFA003F6455 /* ViewController.swift */,
+				1B4EB4BC208F133F003F6455 /* Controllers */,
+				1B4EB4BB208F1320003F6455 /* Views */,
 				1B4EB4AB207F2EFA003F6455 /* Main.storyboard */,
 				1B4EB4AE207F2EFB003F6455 /* Assets.xcassets */,
 				1B4EB4B0207F2EFB003F6455 /* LaunchScreen.storyboard */,
 				1B4EB4B3207F2EFB003F6455 /* Info.plist */,
+				1B4EB4BD208F1434003F6455 /* config.swift */,
 			);
 			path = MyTapNews;
+			sourceTree = "<group>";
+		};
+		1B4EB4BB208F1320003F6455 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1B4EB4BC208F133F003F6455 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1B4EB4A7207F2EFA003F6455 /* AppDelegate.swift */,
+				1B4EB4A9207F2EFA003F6455 /* ViewController.swift */,
+				1B4EB4B9208F0F5E003F6455 /* LoginController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		20C248BE613003B6697035F0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CBF84EA112F5151B7DC61AA8 /* Pods-MyTapNews.debug.xcconfig */,
+				3DC624752B52E478F7162654 /* Pods-MyTapNews.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		89B061C6466A6DD2FA07D774 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B7B0B02A67E0FFC0786796EA /* Pods_MyTapNews.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +117,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1B4EB4B6207F2EFB003F6455 /* Build configuration list for PBXNativeTarget "MyTapNews" */;
 			buildPhases = (
+				A84A7419ACA080C9E9898395 /* [CP] Check Pods Manifest.lock */,
 				1B4EB4A0207F2EFA003F6455 /* Sources */,
 				1B4EB4A1207F2EFA003F6455 /* Frameworks */,
 				1B4EB4A2207F2EFA003F6455 /* Resources */,
+				DE1881D0BDBDA9655C27510B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,12 +178,57 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A84A7419ACA080C9E9898395 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyTapNews-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DE1881D0BDBDA9655C27510B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MyTapNews/Pods-MyTapNews-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyTapNews/Pods-MyTapNews-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1B4EB4A0207F2EFA003F6455 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				1B4EB4AA207F2EFA003F6455 /* ViewController.swift in Sources */,
+				1B4EB4BE208F1434003F6455 /* config.swift in Sources */,
+				1B4EB4BA208F0F5E003F6455 /* LoginController.swift in Sources */,
 				1B4EB4A8207F2EFA003F6455 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,15 +371,13 @@
 		};
 		1B4EB4B7207F2EFB003F6455 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CBF84EA112F5151B7DC61AA8 /* Pods-MyTapNews.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DU83Q645T7;
 				INFOPLIST_FILE = MyTapNews/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = usc.MyTapNews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -296,15 +387,13 @@
 		};
 		1B4EB4B8207F2EFB003F6455 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3DC624752B52E478F7162654 /* Pods-MyTapNews.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DU83Q645T7;
 				INFOPLIST_FILE = MyTapNews/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = usc.MyTapNews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

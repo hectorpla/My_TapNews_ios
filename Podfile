@@ -7,5 +7,6 @@ target 'MyTapNews' do
 
   # Pods for MyTapNews
   pod 'Alamofire'
-
+  pod 'SVProgressHUD'
+  pod 'SwiftyJSON'
 end
