@@ -19,8 +19,11 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
     var token: String!
     var userEmail: String!
     
-    private var newsList: [News] = []
+    private var newsList = [News]()
     private var pageNum: Int = 0
+    private var isLoading: Bool = false
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,14 +33,30 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
         NewsTableView.dataSource = self
         
         print("User name: \(userEmail), token: \(token!)")
-        loadMore()
         
         // TODO: scroll down listener
+        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        spinner.frame = CGRect(x: 0, y: 0, width: self.NewsTableView.frame.width, height: 50)
+        spinner.startAnimating()
+        self.NewsTableView.tableFooterView = spinner
+        
+        loadMore()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let bottom = scrollView.contentSize.height - scrollView.frame.size.height
+        let offset = scrollView.contentOffset.y
+        
+        print("scrollViewDidEndDragging, bottom: \(bottom), offset:\(offset)")
+        if offset - bottom > 30 {
+            loadMore()
+            print("loadMore() called")
+        }
     }
     
     func loadMore() {
@@ -47,12 +66,14 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
         ]
         let url = "\(Config.tapNews.newApiUrl)/userId/\(userEmail!)/pageNum/\(pageNum)"
         
+        assert(!isLoading)
+        self.isLoading = true
         Alamofire.request(url, method: .get, headers: headers)
         .responseJSON { (response) in
             switch response.result {
             case .success:
                 let data = JSON(response.data!)
-                print(data)
+//                print(data)
                 if let list = data.array {
                     list.forEach({ (newsData) in
                         let news = News(urlToImage: newsData["urlToImage"].string!,
@@ -77,7 +98,7 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
             case .failure(let error):
                 print(error)
             }
-            print("after loading news: list \(self.newsList)")
+            self.isLoading = false
         }
     }
 }
@@ -88,17 +109,17 @@ extension NewsViewController {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCard") as! NewsTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCard", for: indexPath) as! NewsTableViewCell
         let news = self.newsList[indexPath.row]
         
-        print(news.title)
         cell.NewsTitleLabel.text = news.title
         cell.NewsDescription.text = news.description
         
         // TODO: implement loading of image from URL
         // bad to put here: repeated downloads for same images?
         // think about cell reuse
-        print("fetching image: \(news.urlToImage)")
+        // consider switching to SDWebImage
+        print("tableViewCellForRowAt fetching image: \(news.urlToImage)")
         DispatchQueue.global().async {
             if let data = try? Data(contentsOf: URL(string: news.urlToImage)!) {
                 if let image = UIImage(data: data) {
@@ -116,4 +137,3 @@ extension NewsViewController {
         return 168
     }
 }
-

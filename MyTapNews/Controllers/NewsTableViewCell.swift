@@ -18,7 +18,7 @@ class NewsTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         // Initialization code
-        
+        NewsDescription.isEditable = false
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
