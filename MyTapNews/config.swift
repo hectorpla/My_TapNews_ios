@@ -12,5 +12,6 @@ struct Config {
     struct tapNews {
         static let loginApiUrl = "https://zhpnl-tap-news-web.herokuapp.com/auth/login"
         static let signupApiUrl = "https://zhpnl-tap-news-web.herokuapp.com/auth/signup"
+        static let newApiUrl = "https://zhpnl-tap-news-web.herokuapp.com/news"
     }
 }

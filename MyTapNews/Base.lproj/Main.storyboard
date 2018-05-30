@@ -136,6 +136,50 @@
                                 <rect key="frame" x="0.0" y="91" width="375" height="527"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewsCard" rowHeight="166" id="jgi-TP-9LF" customClass="NewsTableViewCell" customModule="MyTapNews" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="166"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jgi-TP-9LF" id="vKy-Ro-35w">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="165.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Efy-F3-DbH">
+                                                    <rect key="frame" x="15" y="14" width="181" height="137"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jr3-VL-hii">
+                                                    <rect key="frame" x="204" y="11" width="156" height="67"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="156" id="pb8-VA-NEU"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="waserete kudasai, ame ga yame made ha kaerenai, kaijitsu" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iQf-3I-iv5">
+                                                    <rect key="frame" x="204" y="88" width="156" height="66.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="jr3-VL-hii" firstAttribute="top" secondItem="vKy-Ro-35w" secondAttribute="top" constant="11" id="ITC-fg-h7X"/>
+                                                <constraint firstItem="Efy-F3-DbH" firstAttribute="top" secondItem="vKy-Ro-35w" secondAttribute="top" constant="14" id="TaK-rS-FaG"/>
+                                                <constraint firstAttribute="bottom" secondItem="Efy-F3-DbH" secondAttribute="bottom" constant="14.5" id="cCZ-aA-sLU"/>
+                                                <constraint firstAttribute="trailing" secondItem="jr3-VL-hii" secondAttribute="trailing" constant="15" id="q0B-HQ-034"/>
+                                                <constraint firstItem="Efy-F3-DbH" firstAttribute="leading" secondItem="vKy-Ro-35w" secondAttribute="leading" constant="15" id="sEH-3c-EXa"/>
+                                                <constraint firstItem="jr3-VL-hii" firstAttribute="leading" secondItem="Efy-F3-DbH" secondAttribute="trailing" constant="8" id="zrR-bL-6E5"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="NewsDescription" destination="iQf-3I-iv5" id="K2q-ev-1jd"/>
+                                            <outlet property="NewsImage" destination="Efy-F3-DbH" id="TaQ-Eb-2WG"/>
+                                            <outlet property="NewsTitleLabel" destination="jr3-VL-hii" id="yIi-If-0bE"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -143,7 +187,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="IQW-0a-6bp"/>
                     <connections>
-                        <outlet property="NewsListView" destination="Hmi-9I-XUE" id="dha-Sy-aLi"/>
+                        <outlet property="NewsTableView" destination="Hmi-9I-XUE" id="dha-Sy-aLi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0QI-dE-6ca" userLabel="First Responder" sceneMemberID="firstResponder"/>

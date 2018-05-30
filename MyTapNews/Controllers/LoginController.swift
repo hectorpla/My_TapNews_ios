@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
-//import Toast_Swift
+import Toast_Swift
 
 class LoginController: UIViewController {
     @IBOutlet weak var userName: UITextField!
@@ -58,8 +58,8 @@ class LoginController: UIViewController {
                 let data = JSON(response.data!)
                 print(data)
                 if !data["success"].bool! {
-//                    self.view.makeToa
-                    print("login failed code: \(data["code"].int!)")
+                    self.view.makeToast("login failed code: \(data["code"].int!)")
+//                    print()
                     return
                 }
                 self.token = data["token"].string
@@ -80,8 +80,9 @@ class LoginController: UIViewController {
             let tabBarController = segue.destination as! UITabBarController
             let newsViewController = tabBarController.viewControllers![0] as! NewsViewController
             
-            newsViewController.userEmail = self.userName.text
-            newsViewController.token = self.token
+            // TODO: should use member var?
+            newsViewController.userEmail = self.userName.text!
+            newsViewController.token = self.token!
         }
     }
 }
