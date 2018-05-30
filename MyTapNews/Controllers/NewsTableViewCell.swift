@@ -14,22 +14,11 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet weak var NewsImage: UIImageView!
     @IBOutlet weak var NewsDescription: UITextView!
     
-    var imageUrl: String?
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         // Initialization code
-        print("fetching image: \(self.imageUrl!)")
-        DispatchQueue.global().async {
-            if let data = try? Data(contentsOf: URL(string: self.imageUrl!)!) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self.NewsImage.image = image
-                    }
-                }
-            }
-        }
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -37,5 +26,4 @@ class NewsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }

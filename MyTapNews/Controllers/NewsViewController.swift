@@ -30,7 +30,7 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
         NewsTableView.dataSource = self
         
         print("User name: \(userEmail), token: \(token!)")
-        loadList()
+        loadMore()
         
         // TODO: scroll down listener
     }
@@ -40,7 +40,7 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Dispose of any resources that can be recreated.
     }
     
-    func loadList() {
+    func loadMore() {
         let headers = ["Accept": "application/json",
                    "Content-Type": "application/json",
                    "Authorization": "Bearer " + self.token
@@ -94,10 +94,20 @@ extension NewsViewController {
         print(news.title)
         cell.NewsTitleLabel.text = news.title
         cell.NewsDescription.text = news.description
-        cell.imageUrl = news.urlToImage
         
         // TODO: implement loading of image from URL
-//        cell.NewsImage.image = UIImage
+        // bad to put here: repeated downloads for same images?
+        // think about cell reuse
+        print("fetching image: \(news.urlToImage)")
+        DispatchQueue.global().async {
+            if let data = try? Data(contentsOf: URL(string: news.urlToImage)!) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        cell.NewsImage.image = image
+                    }
+                }
+            }
+        }
         
         return cell
     }

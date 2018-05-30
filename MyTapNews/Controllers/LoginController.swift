@@ -46,6 +46,9 @@ class LoginController: UIViewController {
                                 "password": password]
         
         print(body)
+        
+        // TODO: implement progress bar with SVProgressHUD
+        
         Alamofire.request(Config.tapNews.loginApiUrl, method: .post,
                           parameters: body, encoding: JSONEncoding.default)
         .responseJSON { response in
