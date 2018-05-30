@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 import Toast_Swift
 
-class LoginController: UIViewController {
+class LoginController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var password: UITextField!
     
@@ -21,23 +21,14 @@ class LoginController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        userName.delegate = self
+        password.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     @IBAction func loginPressed(_ sender: UIButton) {
         let userName = self.userName.text!
@@ -61,7 +52,7 @@ class LoginController: UIViewController {
                 let data = JSON(response.data!)
                 print(data)
                 if !data["success"].bool! {
-                    self.view.makeToast("login failed code: \(data["code"].int!)")
+                    self.view.makeToast("login failed code: \(data["code"].int ?? -1)")
 //                    print()
                     return
                 }
@@ -90,3 +81,13 @@ class LoginController: UIViewController {
     }
 }
 
+extension LoginController {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == self.password {
+            self.view.endEditing(true)
+            return true
+        }
+        self.password.becomeFirstResponder()
+        return false
+    }
+}
