@@ -8,11 +8,19 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class NewsViewController: UIViewController {
 
+    @IBOutlet weak var NewsListView: UITableView!
+    
+    // public?
+    var token: String!
+    var userEmail: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        print("User name: \(userEmail), token: \(token)")
     }
 
     override func didReceiveMemoryWarning() {

@@ -9,10 +9,13 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+//import Toast_Swift
 
 class LoginController: UIViewController {
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var password: UITextField!
+    
+    private var token: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +39,7 @@ class LoginController: UIViewController {
     }
     */
     
-    @IBAction func login(_ sender: UIButton) {
+    @IBAction func loginPressed(_ sender: UIButton) {
         let userName = self.userName.text!
         let password = self.password.text!
         let body: Parameters = ["email": userName,
@@ -45,24 +48,41 @@ class LoginController: UIViewController {
         print(body)
         Alamofire.request(Config.tapNews.loginApiUrl, method: .post,
                           parameters: body, encoding: JSONEncoding.default)
-            .responseJSON { response in
+        .responseJSON { response in
 //                print("Request: \(response.request)")
 //                print("Response: \(response.response)")
 //                print("Error: \(response.error)")
         
-                switch response.result {
-                case .success:
-//                    if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
-//                        print("Data: \(utf8Text)")
-//                    }
-                    let data = JSON(response.data)
-                    print(data)
-                    
-                case .failure(let error):
-                    print(error)
+            switch response.result {
+            case .success:
+                let data = JSON(response.data!)
+                print(data)
+                if !data["success"].bool! {
+//                    self.view.makeToa
+                    print("login failed code: \(data["code"].int!)")
+                    return
                 }
+                self.token = data["token"].string
+                self.performSegue(withIdentifier: "LoginSuccessfullyShowNews",
+                                  sender: self)
+            case .failure(let error):
+                print(error)
+            }
         }
         
     }
     
+    // extract login logic
+    func loginAuth() {}
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "LoginSuccessfullyShowNews" {
+            let tabBarController = segue.destination as! UITabBarController
+            let newsViewController = tabBarController.viewControllers![0] as! NewsViewController
+            
+            newsViewController.userEmail = self.userName.text
+            newsViewController.token = self.token
+        }
+    }
 }
+

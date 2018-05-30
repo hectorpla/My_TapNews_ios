@@ -9,4 +9,5 @@ target 'MyTapNews' do
   pod 'Alamofire'
   pod 'SVProgressHUD'
   pod 'SwiftyJSON'
+  pod 'Toast-Swift', '~> 3.0.1'
 end
